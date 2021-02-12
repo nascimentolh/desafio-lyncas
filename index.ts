@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import ServerService from './src/services/ServerService';
+import ServerService from './src/shared/infra/http/ServerService';
 dotenv.config();
 
 const server: ServerService = new ServerService();

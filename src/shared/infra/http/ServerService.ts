@@ -1,5 +1,5 @@
 import { Server } from '@overnightjs/core';
-import * as bodyParser from 'body-parser';
+import * as bodyParser from "body-parser";
 
 class ServerService extends Server {
   private readonly SERVER_STARTED = 'Server started on port: ';
