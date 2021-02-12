@@ -1,4 +1,3 @@
 #!/bin/bash
-yarn global add nodemon
-yarn global add typescript
+ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run
 yarn dev:server
