@@ -6,11 +6,14 @@ import '../typeorm';
 import AppError from '@shared/errors/AppError';
 import '@shared/container';
 import * as dotenv from 'dotenv';
+import cors from 'cors';
+
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(routes);
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
@@ -23,7 +26,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
   return response
     .status(500)
-    .json({ error: 'error', message: 'Internal Server Error' + err });
+    .json({ error: 'error', message: 'Internal Server Error: ' + err });
 });
 
 app.listen(process.env.PORT || 3333, () => {

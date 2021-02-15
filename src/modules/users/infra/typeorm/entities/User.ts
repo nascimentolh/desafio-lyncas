@@ -2,10 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exclude } from "class-transformer";
+import Test from '@modules/exams/infra/typeorm/entities/Test';
+import Question from '@modules/exams/infra/typeorm/entities/Question';
 
 @Entity('users')
 class User {
@@ -18,9 +20,14 @@ class User {
   @Column()
   email: string;
 
-  @Column({ select: false })
-  @Exclude()
+  @Column()
   password: string;
+
+  @OneToMany(() => Test, (test) => test.user)
+  tests: Test[];
+
+  @OneToMany(() => Question, (question) => question.user)
+  questions: Question[];
 
   @CreateDateColumn()
   created_at: Date;

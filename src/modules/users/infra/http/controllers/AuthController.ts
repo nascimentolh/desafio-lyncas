@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { verify } from 'jsonwebtoken';
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
 
 export default class AuthController {
@@ -17,5 +18,9 @@ export default class AuthController {
     });
 
     return response.json({ user: user, access_token });
+  }
+
+  public async validate(request: Request, response: Response): Promise<Response> {
+    return response.json(true);
   }
 }
