@@ -23,9 +23,15 @@
           ></b-form-select>
         </b-col>
       </b-row>
-      <b-button variant="primary" v-if="mode === 'save'" @click="save">
+      <b-button
+        class="mt-2"
+        variant="primary"
+        v-if="mode === 'save'"
+        @click="save"
+      >
         Salvar
       </b-button>
+      <b-button class="ml-2 mt-2" @click="reset">Cancelar</b-button>
     </b-form>
     <hr />
     <b-table
@@ -39,6 +45,13 @@
       <template #cell(actions)="data">
         <b-button variant="warning" @click="loadTest(data.item)" class="mr-2">
           <i class="fa fa-pencil"></i>
+        </b-button>
+        <b-button
+          variant="primary"
+          @click="generateLink(data.item)"
+          class="mr-2"
+        >
+          <i class="fa fa-link"></i>
         </b-button>
       </template>
     </b-table>
@@ -71,7 +84,6 @@ export default {
   watch: {
     test: function () {
       if (this.test.id !== undefined) {
-        console.log("AHAAH");
         this.test.questions.map((question) => {
           this.selected.push(question.id);
         });
@@ -91,6 +103,7 @@ export default {
       this.mode = "save";
       this.test = { questions: [] };
       this.selected = [];
+      this.loadTests();
     },
     save() {
       this.selected.map(async (select) => {
@@ -117,6 +130,14 @@ export default {
     loadTest(test, mode = "save") {
       this.mode = mode;
       this.test = { ...test };
+    },
+    generateLink(test) {
+      navigator.clipboard.writeText(
+        window.location.origin + `/exam/${test.id}`
+      );
+      this.$toasted.show("Url copiada com sucesso!", {
+        type: "info",
+      });
     },
   },
   mounted() {

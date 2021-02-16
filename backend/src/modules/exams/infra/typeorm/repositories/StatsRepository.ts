@@ -28,7 +28,7 @@ class StatsRepository implements IStatsRepository {
   }
 
   public async listAll(): Promise<Stat[]> {
-    return this.ormRepository.find();
+    return this.ormRepository.find({ relations: ['test'] });
   }
 }
 

@@ -29,7 +29,7 @@ export default {
     logout() {
       localStorage.removeItem(userKey);
       this.$store.commit("setUser", null);
-      this.$router.commit({ name: "auth" });
+      this.$router.push({ name: "auth" });
     },
   },
 };

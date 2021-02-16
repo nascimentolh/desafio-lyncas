@@ -1,43 +1,31 @@
 <template>
   <div class="exams-done">
-    <table class="table table-striped borderless">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>PROVA</th>
-          <th>NOME</th>
-          <th>ACERTOS</th>
-          <th>TOTAL</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr v-for="exam in exams" :key="exam.id">
-          <td>{{ exam.id }}</td>
-          <td>Matématica Aplicada</td>
-          <td>{{ exam.doer }}</td>
-          <td>{{ exam.hits }}</td>
-          <td>{{ exam.total }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <b-table :items="exams" :fields="fields"></b-table>
   </div>
 </template>
 
 <script>
+import { baseApiUrl } from "@/global";
+import axios from "axios";
+
 export default {
   name: "ExamsDone",
   data: function () {
     return {
       exams: [],
+      fields: [
+        { key: "test.name", label: "Prova", sortable: true },
+        { key: "doer", label: "Avaliado", sortable: true },
+        { key: "hits", label: "Acertos", sortable: true },
+        { key: "total", label: "Total Questões", sortable: true },
+      ],
     };
   },
   methods: {
     getExams() {
-      this.exams = [
-        { id: 1, hits: 2, total: 4, doer: "Ana Beatriz" },
-        { id: 2, hits: 4, total: 4, doer: "Larissa" },
-      ];
+      axios.get(`${baseApiUrl}/stats`).then((res) => {
+        this.exams = res.data;
+      });
     },
   },
   mounted() {

@@ -7,6 +7,8 @@ import Home from "@/components/home/Home";
 import Dashboard from "@/components/dashboard/Dashboard";
 import AdminPages from "@/components/admin/AdminPages";
 import Auth from "@/components/auth/Auth";
+import Exam from "@/components/exams/Exam";
+import Done from "@/components/exams/Done";
 
 Vue.use(VueRouter);
 
@@ -32,6 +34,16 @@ const routes = [
     name: "auth",
     path: "/auth",
     component: Auth,
+  },
+  {
+    name: "exam",
+    path: "/exam/:id",
+    component: Exam,
+  },
+  {
+    name: "done",
+    path: "/exam/done",
+    component: Done,
   },
 ];
 

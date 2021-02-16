@@ -10,6 +10,8 @@ import QuestionsRepository from '@modules/exams/infra/typeorm/repositories/Quest
 import IQuestionsRepository from '@modules/exams/repositories/IQuestionsRepository';
 import ITestsRepository from '@modules/exams/repositories/ITestsRepository';
 import TestsRepository from '@modules/exams/infra/typeorm/repositories/TestsRepository';
+import IStatsRepository from '@modules/exams/repositories/IStatsRepository';
+import StatsRepository from '@modules/exams/infra/typeorm/repositories/StatsRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -29,4 +31,9 @@ container.registerSingleton<IQuestionsRepository>(
 container.registerSingleton<ITestsRepository>(
   'TestsRepository',
   TestsRepository
+);
+
+container.registerSingleton<IStatsRepository>(
+  'StatsRepository',
+  StatsRepository
 );

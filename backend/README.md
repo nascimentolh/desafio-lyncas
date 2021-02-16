@@ -40,3 +40,6 @@ OBS: Será necessario ter instalado na maquina [NodeJS](https://nodejs.org/en/),
 4. Execute `yarn typeorm migration:run` para realizar a população do banco de dados.
 2. Execute `yarn dev:server` para subir a aplicação (Desenvolvimento).
 3. O projeto será executado no link [http://localhost:3333](http://localhost:3333).
+
+
+
