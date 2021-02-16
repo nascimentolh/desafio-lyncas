@@ -38,8 +38,9 @@ OBS: Será necessario ter instalado na maquina [NodeJS](https://nodejs.org/en/),
 2. Dentro do arquivo .env você deverá configurar as variavéis de acordo com seu ambiente.
 3. Execute `yarn` para instalar as dependências do projeto.
 4. Execute `yarn typeorm migration:run` para realizar a população do banco de dados.
-2. Execute `yarn dev:server` para subir a aplicação (Desenvolvimento).
-3. O projeto será executado no link [http://localhost:3333](http://localhost:3333).
+5. Execute `yarn seed:run` para realizar a criação do usuário.
+6. Execute `yarn dev:server` para subir a aplicação (Desenvolvimento).
+7. O projeto será executado no link [http://localhost:3333](http://localhost:3333).
 
 
 
