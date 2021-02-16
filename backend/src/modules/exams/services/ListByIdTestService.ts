@@ -3,15 +3,15 @@ import Test from '../infra/typeorm/entities/Test';
 import ITestsRepository from '../repositories/ITestsRepository';
 
 @injectable()
-class ListTestsService {
+class ListByIdTestService {
   constructor(
     @inject('TestsRepository')
     private testsRepository: ITestsRepository
   ) {}
 
-  public async execute(): Promise<Test[]> {
-    return this.testsRepository.listAll();
+  public async execute(id: string): Promise<Test | undefined> {
+    return this.testsRepository.findById(id);
   }
 }
 
-export default ListTestsService;
+export default ListByIdTestService;

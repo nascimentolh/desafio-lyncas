@@ -11,16 +11,16 @@ class QuestionsRepository implements IQuestionsRepository {
   }
 
   public async findById(id: string): Promise<Question | undefined> {
-    const user = await this.ormRepository.findOne(id);
-    return user;
+    const question = await this.ormRepository.findOne(id);
+    return question;
   }
 
   public async create(data: ICreateQuestionDTO): Promise<Question> {
-    const user = this.ormRepository.create(data);
+    const question = this.ormRepository.create(data);
 
-    await this.ormRepository.save(user);
+    await this.ormRepository.save(question);
 
-    return user;
+    return question;
   }
 
   public async save(question: Question): Promise<Question> {

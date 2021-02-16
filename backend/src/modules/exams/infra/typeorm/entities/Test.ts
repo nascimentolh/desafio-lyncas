@@ -6,12 +6,13 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
-  OneToMany,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import Question from './Question';
+import Stat from "./Stat";
 
 @Entity('tests')
 class Test {
@@ -35,6 +36,9 @@ class Test {
     inverseJoinColumn: { name: 'questionId' },
   })
   questions: Question[];
+
+  @ManyToOne(() => Stat, stat => stat.test)
+  stats: Stat[];
 
   @CreateDateColumn()
   created_at: Date;

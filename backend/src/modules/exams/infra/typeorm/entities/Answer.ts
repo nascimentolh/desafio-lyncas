@@ -18,7 +18,7 @@ class Answer {
   description: string;
 
   @ManyToOne(() => Question, (question) => question.answers)
-  @JoinColumn({name: "question_id"})
+  @JoinColumn({ name: 'question_id' })
   question: Question;
 
   @CreateDateColumn()

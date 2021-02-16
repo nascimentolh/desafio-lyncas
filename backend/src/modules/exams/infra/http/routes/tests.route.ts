@@ -6,7 +6,7 @@ const testRoute = Router();
 const testController = new TestsController();
 
 testRoute.get('/', testController.index);
-// testRoute.get('/:id', answerController.show);
+testRoute.get('/:id', testController.show);
 testRoute.use(authenticated);
 testRoute.post('/', testController.create);
 
